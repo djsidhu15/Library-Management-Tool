@@ -93,6 +93,11 @@ public class Dashboard extends javax.swing.JFrame {
         });
 
         bhistory.setText("History");
+        bhistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bhistoryActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Lend Book:");
 
@@ -206,7 +211,7 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(tfacno1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfstaffid1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel10)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -265,13 +270,16 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfstaffid1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfacno1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfacno1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(breturn)
                 .addGap(137, 137, 137))
         );
@@ -365,7 +373,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
         else{
             
-            String sql2 = "insert into lend values('"+sid+"','"+acno+"');";
+            String sql2 = "insert into lend (sid,acno) values('"+sid+"','"+acno+"');";
             stmt.execute(sql2);
             
             /*Calendar cal = Calendar.getInstance(); 
@@ -380,7 +388,7 @@ public class Dashboard extends javax.swing.JFrame {
 
             System.out.print(time);
             
-            String sql3 = "insert into history(sid,acno,ltime,staffname) values('"+sid+"','"+acno+"','"+time+"','"+staffname+"')";  
+            String sql3 = "insert into history(sid,acno,ltime,rtime) values('"+sid+"','"+acno+"','"+time+"','No return')";  
             Statement stmt3 = con.createStatement();
             stmt3.execute(sql3);
             
@@ -448,9 +456,28 @@ public class Dashboard extends javax.swing.JFrame {
 
             System.out.print(time);
             
-            String sql3 = "update history set rtime ='"+time+"' where acno ='"+acno+"' and sid = '"+time+"';";  
+            String sql2_1 = "select * from history;";
+            Statement stmt2 = con.createStatement();
+            ResultSet rs2 = stmt2.executeQuery(sql2_1);
+            
+            int id = 0;
+            
+            rs2.afterLast();
+            while(rs2.previous()){
+                if(rs2.getString("sid").equals(sid) && rs2.getString("acno").equals(acno)){
+                    id=rs2.getInt("id");
+                    break;
+                }
+            }
+            
+            if(id!=0){
+            String sql3 = "update history set rtime ='"+time+"' where id ='"+id+"'";  
             Statement stmt3 = con.createStatement();
             stmt3.execute(sql3);
+            }
+            else if(id==0){
+                System.out.print("Return time not updated\n");
+            }
             
             
                 JLabel label = new JLabel("Removed from lending list");
@@ -515,6 +542,13 @@ public class Dashboard extends javax.swing.JFrame {
         l.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bstandinglendersActionPerformed
+
+    private void bhistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhistoryActionPerformed
+        // TODO add your handling code here:
+        History his = new History();
+        his.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bhistoryActionPerformed
 
     /**
      * @param args the command line arguments

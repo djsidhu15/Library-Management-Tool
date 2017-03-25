@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package library.management.tool;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 /**
  *
@@ -23,6 +25,8 @@ public class MainJFrame extends javax.swing.JFrame {
     
     public MainJFrame() {
         initComponents();
+        //jLabel3.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/src/crescentlogo2.png")).getImage().getScaledInstance(433, 58, Image.SCALE_SMOOTH)));
+        
     }
 
     /**
@@ -40,8 +44,7 @@ public class MainJFrame extends javax.swing.JFrame {
         etpassword = new javax.swing.JTextField();
         title = new javax.swing.JLabel();
         bsubmit = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ta = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,14 +67,17 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        ta.setColumns(20);
-        ta.setRows(5);
-        jScrollPane1.setViewportView(ta);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\devac\\Documents\\NetBeansProjects\\Library Management Tool\\src\\crescentlogo2.png")); // NOI18N
+        jLabel3.setText("jLabel3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 175, Short.MAX_VALUE)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(207, 207, 207))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -87,18 +93,16 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGap(379, 379, 379)
                         .addComponent(bsubmit))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(340, 340, 340)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(316, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 206, Short.MAX_VALUE)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(207, 207, 207))
+                        .addGap(230, 230, 230)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -110,9 +114,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(etpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addComponent(bsubmit)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         jLabel1.setFont (jLabel1.getFont().deriveFont (22.0f));
@@ -176,6 +178,7 @@ public class MainJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainJFrame().setVisible(true);
+                
             }
         });
     }
@@ -186,8 +189,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField etusername;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea ta;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
