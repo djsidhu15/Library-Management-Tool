@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package library.management.tool;
+import java.awt.Font;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author devac
@@ -41,10 +43,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         etusername = new javax.swing.JTextField();
-        etpassword = new javax.swing.JTextField();
         title = new javax.swing.JLabel();
         bsubmit = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        etpassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,6 +71,12 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\devac\\Documents\\NetBeansProjects\\Library Management Tool\\src\\crescentlogo2.png")); // NOI18N
         jLabel3.setText("jLabel3");
+
+        etpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                etpasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,9 +128,9 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1.setFont (jLabel1.getFont().deriveFont (22.0f));
         jLabel2.setFont (jLabel2.getFont().deriveFont (22.0f));
         etusername.setFont (etusername.getFont().deriveFont (22.0f));
-        etpassword.setFont (etpassword.getFont().deriveFont (22.0f));
         title.setFont (title.getFont().deriveFont (40.0f));
         bsubmit.setFont (bsubmit.getFont().deriveFont (22.0f));
+        etpassword.setFont (etpassword.getFont().deriveFont (22.0f));
 
         pack();
         setLocationRelativeTo(null);
@@ -136,6 +144,16 @@ public class MainJFrame extends javax.swing.JFrame {
     private void bsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsubmitActionPerformed
         // TODO add your handling code here:
         String username = etusername.getText().toString();
+        String password = etpassword.getText().toString();
+        if(username.equals("2007_19") && password.equals("12345")){
+            dashboard.setVisible(true);
+            this.dispose();
+        }
+        else{
+            JLabel label = new JLabel("Username or password is wrong");
+            label.setFont(new Font("Arial", Font.BOLD, 18));
+            JOptionPane.showMessageDialog(null,label,"Error",JOptionPane.ERROR_MESSAGE);
+        }
 //        String password = etpassword.getText().toString();
 //        ta.setText(username+password);
           
@@ -143,9 +161,12 @@ public class MainJFrame extends javax.swing.JFrame {
 //          obj.setVisible(true);
 //          this.dispose();
 
-            dashboard.setVisible(true);
-            this.dispose();
+            
     }//GEN-LAST:event_bsubmitActionPerformed
+
+    private void etpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_etpasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,7 +206,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bsubmit;
-    private javax.swing.JTextField etpassword;
+    private javax.swing.JPasswordField etpassword;
     private javax.swing.JTextField etusername;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

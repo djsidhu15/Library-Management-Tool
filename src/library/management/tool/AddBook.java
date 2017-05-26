@@ -181,7 +181,7 @@ public class AddBook extends javax.swing.JFrame {
         rs.beforeFirst();
         
         if(records == 0){
-            String sql2 = "insert into book values('"+acno+"','"+name+"','"+author+"','"+category+"')";
+            String sql2 = "insert into book (acno,name,author,category) values('"+acno+"','"+name+"','"+author+"','"+category+"')";
             int action = 0;
             action = stmt.executeUpdate(sql2);
             

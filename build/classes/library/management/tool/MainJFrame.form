@@ -104,11 +104,6 @@
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="etusername.setFont (etusername.getFont().deriveFont (22.0f));"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="etpassword">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="etpassword.setFont (etpassword.getFont().deriveFont (22.0f));"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="title">
       <Properties>
         <Property name="text" type="java.lang.String" value="Library Management System"/>
@@ -135,6 +130,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel3"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="etpassword">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="etpasswordActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="etpassword.setFont (etpassword.getFont().deriveFont (22.0f));"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

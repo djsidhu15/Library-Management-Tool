@@ -159,7 +159,7 @@ public class AddStaff extends javax.swing.JFrame {
         rs.beforeFirst();
         
         if(records == 0){
-            String sql2 = "insert into staff values('"+sid+"','"+name+"')";
+            String sql2 = "insert into staff (sid,sname) values('"+sid+"','"+name+"')";
             int action = 0;
             action = stmt.executeUpdate(sql2);
             
